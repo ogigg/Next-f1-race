@@ -1,7 +1,7 @@
+import { RACES_API } from '@constants/api';
+import { RacesApiResponse } from '@models/race';
 import { AxiosResponse } from 'axios';
 import { StatusCodes } from 'http-status-codes';
-import { RACES_API } from '../../constants/api';
-import { RacesApiResponse } from '../../models/race';
 import httpClient from '../services/apiClient';
 
 const RacesApi = {

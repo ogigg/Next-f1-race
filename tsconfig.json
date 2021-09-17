@@ -14,7 +14,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@models/*": ["./src/models/*"],
+      "@api/*": ["./src/lib/api/*"],
+      "@constants/*": ["./src/constants/*"],
+    }
   },
   "include": ["src"]
 }

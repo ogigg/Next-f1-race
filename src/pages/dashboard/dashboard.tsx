@@ -1,6 +1,6 @@
+import RacesApi from '@api/races';
+import { Race } from '@models/race';
 import React, { useState } from 'react';
-import { Race } from '../../models/race';
-import RacesApi from '../../lib/api/races';
 
 export const Dashboard = () => {
   const [races, setRaces] = useState<Race[]>([]);
