@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { Race } from '../../models/race';
+import RacesApi from '../../lib/api/races';
 
 export const Dashboard = () => {
-  const baseURL = 'http://ergast.com/api/f1/current.json';
-  axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-  const [races, setRaces] = useState([]);
+  const [races, setRaces] = useState<Race[]>([]);
   React.useEffect(() => {
-    axios.get(baseURL).then(response => {
-      const tmp = response.data.MRData.RaceTable.Races;
-      console.log(tmp);
-      setRaces(tmp);
-    });
+    RacesApi.getRacesData().then(racesData => setRaces(racesData.data.MRData.RaceTable.Races));
   }, []);
 
-  return <div className="App">I've got: {races.length} races</div>;
+  const listItems = races.map(race => <li>{race.Circuit.circuitName}</li>);
+
+  return (
+    <div className="App">
+      I've got: {races.length} races
+      <ul>{listItems}</ul>
+    </div>
+  );
 };
